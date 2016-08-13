@@ -30,7 +30,7 @@ const TodoManager = React.createClass({
   removetodo: function(todo) {
     store.dispatch({type:"REMOVE_TODO" , id:todo.id});
   },
-  render: function () {
+   render: function () {
     return (
         <div>
         <Todo addNewTodo={this.addNewTodo} />

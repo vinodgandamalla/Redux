@@ -5,11 +5,14 @@ import FilterTodos from './FilterTodos.js';
 
 import ClearCompleted from './ClearCompleted.js';
 
+import ItemsLeft from './ItemsLeft.js';
+
 const Footer= React.createClass({
   render: function () {
     return (
         <div>
-         <span>{this.props.itemsleft} items left </span>
+
+        <ItemsLeft items={this.props.itemsleft} />
         <FilterTodos All={this.props.showall}
                      Active={this.props.active}
                      Completed={this.props.completed} />
