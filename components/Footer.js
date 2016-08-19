@@ -7,16 +7,16 @@ import ClearCompleted from './ClearCompleted.js';
 
 import ItemsLeft from './ItemsLeft.js';
 
+import store from './../state/store.js';
+
 const Footer= React.createClass({
-  render: function () {
+    render: function () {
     return (
         <div>
 
         <ItemsLeft items={this.props.itemsleft} />
-        <FilterTodos All={this.props.showall}
-                     Active={this.props.active}
-                     Completed={this.props.completed} />
-      <ClearCompleted ClearCompleted ={this.props.clearcompleted} />
+        <FilterTodos />
+        <ClearCompleted />
         </div>
     );
   }

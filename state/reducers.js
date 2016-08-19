@@ -4,12 +4,11 @@ import { createStore,combineReducers } from 'redux';
                {id: 1, text:"Do Laundry", pending:true},
                {id: 2, text:"Implement Todo", pending:false}];
 
- var idx = 3;
 
 export const todoReducer = function (state = data, action) {
   switch(action.type) {
   case "ADD_TODO" :
-    return state.concat([{id: idx++,
+    return state.concat([{id: state.length++,
                           text: action.text,
                           pending: false}]);
   case "TOGGLE_TODO" :
