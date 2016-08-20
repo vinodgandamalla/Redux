@@ -12,10 +12,8 @@ const TodoManager = React.createClass({
         <div>
         <Todo />
         <TodoList todos={this.props.todos}
-                  visibile={this.props.visibile}
-                   />
-        <Footer itemsleft={this.props.todos.filter(function (todo) { return !todo.pending}).length}
-                />
+                  visibile={this.props.visibile} />
+        <Footer itemsleft={this.props.todos.filter(function (todo) { return !todo.pending}).length} />
         </div>
     );
   }
