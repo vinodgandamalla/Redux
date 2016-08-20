@@ -21,7 +21,7 @@ const TodoManager = React.createClass({
 
 const mapStateToProps = function (store) {
   return {
-    todos:store.todostate,
+    todos:store.todostate.tasks,
     visibile:store.visibile
   };
 }

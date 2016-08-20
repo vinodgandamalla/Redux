@@ -5,14 +5,17 @@ import { createStore,combineReducers } from 'redux';
                {id: 2, text:"Implement Todo", pending:false}];
 
 
-export const todoReducer = function (state = data, action) {
+export const todoReducer = function (state ={tasks: data, index:4}, action) {
   switch(action.type) {
   case "ADD_TODO" :
-    return state.concat([{id: state.length++,
+    var newtasks= state.tasks.concat([{id: state.index,
                           text: action.text,
                           pending: false}]);
+    var newindex = state.index + 1;
+    return {tasks: newtasks,index: newindex};
+
   case "TOGGLE_TODO" :
-    return state.map(function (i) {
+    var toggleTodo = state.tasks.map(function (i) {
       if (i.id == action.id)
       {
         return  Object.assign({}, i, {pending: !i.pending});
@@ -21,15 +24,23 @@ export const todoReducer = function (state = data, action) {
       {
         return i;
       }});
+    return {tasks:toggleTodo, index:state.index}
+
   case "CLEAR_COMPLETED" :
-    return state.filter(function (i) {
+    var remainingTodos = state.tasks.filter(function (i) {
       return !i.pending;});
+    return {tasks: remainingTodos , index: state.index};
 
   case "REMOVE_TODO" :
-    return state.filter(function (i) {
-      return (action.id != i.id );});
+    var remainingTodos = state.tasks.filter(function (i) {
+      if (action.id != i.id )
+      {
+        return i;
+      }});
+    return {tasks: remainingTodos, index: state.index};
+
   default:
-    return state;
+    return state
   }
 }
 
