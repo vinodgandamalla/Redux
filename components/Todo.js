@@ -3,14 +3,21 @@ import ReactDOM from 'react-dom';
 import store from './../state/store.js';
 
 const Todo = React.createClass({
-   addNewTodo: function() {
-    store.dispatch({type:"ADD_TODO" , text:document.getElementById('todo-textbox').value});
-    document.getElementById('todo-textbox').value='';
+  getInitialState: function() {
+    return {txt: ''};
   },
+  addNewTodo: function() {
+    store.dispatch({type:"ADD_TODO" , text: this.state.txt});
+     this.setState({text: ''});
+  },
+  addtext: function (e) {
+    this.setState({txt: e.target.value});
+  },
+
   render: function () {
     return (
       <div>
-      <input type="text" id="todo-textbox" />
+      <input type="text" id="todo-textbox" onChange= {this.addtext}  />
       <input type="button"
              value="Add Todo"
              onClick = {this.addNewTodo}  />
